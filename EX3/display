@@ -1,0 +1,8 @@
+public class Display extends Observer {
+public void displayText(String text) {
+        		System.out.println("------Display------");
+        		System.out.println(text);
+   	}
+}
+@Override
+	public void update() {}
