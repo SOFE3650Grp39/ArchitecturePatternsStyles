@@ -1,0 +1,45 @@
+public class CashRegister {
+private Display display = new Display();
+private TicketPrinter ticketPrinter = new TicketPrinter();
+private Product currentProduct;
+private ProductDB productDB = new ProductDB();
+private int UPCCode;
+
+	private List<Observer> observers = new ArrayList<Observer>();
+		private int state;
+	
+	public int getState() {
+		return state;
+	}
+Public void setState(int state) {
+	this.state=state;
+	notifyAllObservers();
+}
+	Public void attach (Observer observer) {
+		Observers.add (observer);
+}
+
+	Public void notifyAllObservers () {
+		For (Observer observer : observers) {
+observer.update();
+}
+}
+}
+	
+	
+
+public void setCurrentProductUPC(int UPCCode) {
+        		this.UPCCode = UPCCode;
+        		this.currentProduct = this.getCurrentProductInfo();
+
+        		if (this.currentProduct != null) { // Prints only when the product is defined
+            			this.display.displayText(this.currentProduct.toString()); // Displays the scanned item
+            			this.ticketPrinter.displayText(this.currentProduct.toString());
+      		}
+    	}
+
+    public Product getCurrentProductInfo() {
+        currentProduct = this.productDB.GetProductInfo(this.UPCCode);
+        return currentProduct;
+    }
+}
