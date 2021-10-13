@@ -1,6 +1,6 @@
 public class CashRegister {
-private Display display = new Display();
-private TicketPrinter ticketPrinter = new TicketPrinter();
+private ViewInterface display = new Display();
+private ViewInterface ticketPrinter = new TicketPrinter();
 private Product currentProduct;
 private ProductDB productDB = new ProductDB();
 private int UPCCode;
